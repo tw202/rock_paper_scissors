@@ -84,6 +84,6 @@ function playRound(playerSelection, computerSelection){
     return endGameMessage;
 }
 
-const playerSelection = "rock";
+const playerSelection = prompt();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
