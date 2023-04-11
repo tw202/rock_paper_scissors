@@ -84,6 +84,51 @@ function playRound(playerSelection, computerSelection){
     return endGameMessage;
 }
 
-const playerSelection = prompt();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    let playerSelection;
+    let computerSelection;
+    let endGameMessage;
+    let messageArray;
+    let amountWins = 0;
+    let amountLosses = 0;
+    let standing;
+    let finalMessage;
+    
+    for (let i = 1; i <= 5; i++ ){
+        computerSelection = getComputerChoice();
+        playerSelection = prompt();
+        endGameMessage = playRound(playerSelection, computerSelection);
+        messageArray = endGameMessage.split(" ");
+        
+        if (endGameMessage == "Please input Rock, Paper or Scissors!"){
+            i--;
+            console.log(endGameMessage);
+            continue;
+        }
+
+        if (messageArray[1] == "win!"){
+            amountWins++;
+        }
+        if (messageArray[1] == "lose!"){
+            amountLosses++;
+        }
+        console.log(endGameMessage)
+        standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`
+        console.log(standing)
+
+        if (i == 5){
+            if (amountWins > amountLosses){
+                finalMessage = `You win ${amountWins} : ${amountLosses}!`;
+            }else if (amountLosses > amountWins){
+                finalMessage = `You lose ${amountWins} : ${amountLosses}!`
+            }else{
+                finalMessage = `It's a draw! ${amountWins} : ${amountLosses}`
+            }
+
+            console.log(finalMessage);
+        }
+    }
+
+}
+
+game();
