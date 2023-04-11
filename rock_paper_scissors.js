@@ -24,20 +24,60 @@ function playRound(playerSelection, computerSelection){
     let playerSelectionLowercase = playerSelection.toLowerCase();
     let computerSelectionLowerCase = computerSelection.toLowerCase();
     let winOrLose;
+    let winner;
+    let loser;
+
     switch (playerSelectionLowercase){
         case "rock":
             if (computerSelectionLowerCase == "paper"){
                 winOrLose = "lose";
+                winner = "Paper";
+                loser = "Rock";
             }else if(computerSelectionLowerCase == "scissors"){
                 winOrLose = "win";
+                winner = "Rock";
+                loser = "Scissors";
             }else {
                 isDraw = true;
+                endGameMessage = "Draw!";
+                return endGameMessage;
             }
             break;
+
         case "paper":
+            if (computerSelectionLowerCase == "scissors"){
+                winOrLose = "lose";
+                winner = "Scissors";
+                loser = "Paper";
+            }else if(computerSelectionLowerCase == "rock"){
+                winOrLose = "win";
+                winner = "Paper";
+                loser = "Rock";
+            }else {
+                isDraw = true;
+                endGameMessage = "Draw!";
+                return endGameMessage;
+            }
             break;
+
         case "scissors":
+            if (computerSelectionLowerCase == "rock"){
+                winOrLose = "lose";
+                winner = "Rock";
+                loser = "Scissors";
+            }else if(computerSelectionLowerCase == "paper"){
+                winOrLose = "win";
+                winner = "Scissors";
+                loser = "Paper";
+            }else {
+                isDraw = true;
+                endGameMessage = "Draw!";
+                return endGameMessage;
+            }
             break;
+        default:
+            endGameMessage = "Please input Rock, Paper or Scissors!";
+            return endGameMessage;
     }
 
     endGameMessage = `You ${winOrLose}! ${winner} beats ${loser}`;
