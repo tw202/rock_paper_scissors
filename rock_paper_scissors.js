@@ -1,7 +1,6 @@
 function getComputerChoice(){
     let computerChoice;
     let randomNumber;
-    let isDraw;
     randomNumber = Math.floor(Math.random() * 3) + 1;
 
     switch(randomNumber){
@@ -109,6 +108,7 @@ function game(){
         if (messageArray[1] == "win!"){
             amountWins++;
         }
+
         if (messageArray[1] == "lose!"){
             amountLosses++;
         }
@@ -128,7 +128,6 @@ function game(){
             console.log(finalMessage);
         }
     }
-
 }
 
 game();
