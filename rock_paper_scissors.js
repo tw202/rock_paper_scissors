@@ -39,6 +39,8 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
+                console.log(endRoundMessage);
+                return;
             }
             break;
 
@@ -54,6 +56,8 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
+                console.log(endRoundMessage);
+                return;
             }
             break;
 
@@ -69,10 +73,14 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
+                console.log(endRoundMessage);
+                return;
             }
             break;
         default:
             endRoundMessage = "Please input Rock, Paper or Scissors!";
+            console.log(endRoundMessage);
+            return;
     }
 
     endRoundMessage = `You ${winOrLose}! ${winner} beats ${loser}`;
@@ -95,8 +103,8 @@ function playRound(playerSelection){
         console.log(endRoundMessage)
         standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`
         console.log(standing)
-
-        let gamesPlayed = 0;
+        
+        let gamesPlayed;
         gamesPlayed = amountWins + amountLosses;
         if (gamesPlayed == 5){
             if (amountWins > amountLosses){
@@ -113,5 +121,7 @@ function playRound(playerSelection){
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-    button.addEventListener('click', playRound);
+    button.addEventListener('click', (e) => {
+        playRound(e.target.innerText.toString());
+    });
 });
