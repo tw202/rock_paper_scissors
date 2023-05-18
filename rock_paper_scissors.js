@@ -18,10 +18,10 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-function playRound(playerSelection, computerSelection){
-    let endGameMessage;
+function playRound(playerSelection){
+    let endRoundMessage;
     let playerSelectionLowercase = playerSelection.toLowerCase();
-    let computerSelectionLowerCase = computerSelection.toLowerCase();
+    let computerSelectionLowerCase = getComputerChoice().toLowerCase();
     let winOrLose;
     let winner;
     let loser;
@@ -38,8 +38,7 @@ function playRound(playerSelection, computerSelection){
                 loser = "Scissors";
             }else {
                 isDraw = true;
-                endGameMessage = "Draw!";
-                return endGameMessage;
+                endRoundMessage = "Draw!";
             }
             break;
 
@@ -54,8 +53,7 @@ function playRound(playerSelection, computerSelection){
                 loser = "Rock";
             }else {
                 isDraw = true;
-                endGameMessage = "Draw!";
-                return endGameMessage;
+                endRoundMessage = "Draw!";
             }
             break;
 
@@ -70,40 +68,22 @@ function playRound(playerSelection, computerSelection){
                 loser = "Paper";
             }else {
                 isDraw = true;
-                endGameMessage = "Draw!";
-                return endGameMessage;
+                endRoundMessage = "Draw!";
             }
             break;
         default:
-            endGameMessage = "Please input Rock, Paper or Scissors!";
-            return endGameMessage;
+            endRoundMessage = "Please input Rock, Paper or Scissors!";
     }
 
-    endGameMessage = `You ${winOrLose}! ${winner} beats ${loser}`;
-    return endGameMessage;
-}
-
-function game(){
-    let playerSelection;
-    let computerSelection;
-    let endGameMessage;
+    endRoundMessage = `You ${winOrLose}! ${winner} beats ${loser}`;
+ 
     let messageArray;
     let amountWins = 0;
     let amountLosses = 0;
     let standing;
     let finalMessage;
     
-    for (let i = 1; i <= 5; i++ ){
-        computerSelection = getComputerChoice();
-        playerSelection = prompt();
-        endGameMessage = playRound(playerSelection, computerSelection);
-        messageArray = endGameMessage.split(" ");
-        
-        if (endGameMessage == "Please input Rock, Paper or Scissors!"){
-            i--;
-            console.log(endGameMessage);
-            continue;
-        }
+        messageArray = endRoundMessage.split(" ");
 
         if (messageArray[1] == "win!"){
             amountWins++;
@@ -112,11 +92,13 @@ function game(){
         if (messageArray[1] == "lose!"){
             amountLosses++;
         }
-        console.log(endGameMessage)
+        console.log(endRoundMessage)
         standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`
         console.log(standing)
 
-        if (i == 5){
+        let gamesPlayed = 0;
+        gamesPlayed = amountWins + amountLosses;
+        if (gamesPlayed == 5){
             if (amountWins > amountLosses){
                 finalMessage = `You win ${amountWins} : ${amountLosses}!`;
             }else if (amountLosses > amountWins){
@@ -127,7 +109,6 @@ function game(){
 
             console.log(finalMessage);
         }
-    }
 }
 
 game();
