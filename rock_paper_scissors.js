@@ -18,6 +18,10 @@ function getComputerChoice(){
     return computerChoice;
 }
 
+let amountWins = 0;
+let amountLosses = 0;
+let standing;
+
 function playRound(playerSelection){
     let endRoundMessage;
     let playerSelectionLowercase = playerSelection.toLowerCase();
@@ -86,9 +90,6 @@ function playRound(playerSelection){
     endRoundMessage = `You ${winOrLose}! ${winner} beats ${loser}`;
  
     let messageArray;
-    let amountWins = 0;
-    let amountLosses = 0;
-    let standing;
     let finalMessage;
     
         messageArray = endRoundMessage.split(" ");
@@ -116,6 +117,8 @@ function playRound(playerSelection){
             }
 
             console.log(finalMessage);
+            amountLosses = 0;
+            amountWins = 0;
         }
 }
 
