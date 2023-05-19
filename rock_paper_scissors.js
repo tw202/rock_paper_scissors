@@ -103,7 +103,7 @@ function playRound(playerSelection){
         }
         result.textContent = endRoundMessage;
         standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`;
-        console.log(standing);
+        standingDiv.textContent = standing;
         
         let gamesPlayed;
         gamesPlayed = amountWins + amountLosses;
@@ -130,3 +130,4 @@ buttons.forEach((button) => {
 });
 
 const result = document.querySelector('#result');
+const standingDiv = document.querySelector('#standing');
