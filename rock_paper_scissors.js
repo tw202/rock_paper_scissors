@@ -43,7 +43,7 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
-                console.log(endRoundMessage);
+                result.textContent = endRoundMessage;
                 return;
             }
             break;
@@ -60,7 +60,7 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
-                console.log(endRoundMessage);
+                result.textContent = endRoundMessage;
                 return;
             }
             break;
@@ -77,13 +77,13 @@ function playRound(playerSelection){
             }else {
                 isDraw = true;
                 endRoundMessage = "Draw!";
-                console.log(endRoundMessage);
+                result.textContent = endRoundMessage;
                 return;
             }
             break;
         default:
             endRoundMessage = "Please input Rock, Paper or Scissors!";
-            console.log(endRoundMessage);
+            result.textContent = endRoundMessage;
             return;
     }
 
@@ -101,9 +101,9 @@ function playRound(playerSelection){
         if (messageArray[1] == "lose!"){
             amountLosses++;
         }
-        console.log(endRoundMessage)
-        standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`
-        console.log(standing)
+        result.textContent = endRoundMessage;
+        standing = `Current standing is ${amountWins.toString()} wins and ${amountLosses} losses!`;
+        console.log(standing);
         
         let gamesPlayed;
         gamesPlayed = amountWins + amountLosses;
@@ -116,7 +116,7 @@ function playRound(playerSelection){
                 finalMessage = `It's a draw! ${amountWins} : ${amountLosses}`
             }
 
-            console.log(finalMessage);
+            result.textContent = finalMessage;
             amountLosses = 0;
             amountWins = 0;
         }
@@ -128,3 +128,5 @@ buttons.forEach((button) => {
         playRound(e.target.innerText.toString());
     });
 });
+
+const result = document.querySelector('#result');
